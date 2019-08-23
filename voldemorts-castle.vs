@@ -54,15 +54,6 @@ eval "$1"
 loadedLibs="$loadedLibs\ncore V1.0: VScript Core Module"
 
 # end of library core 
-
-loadedLibs="$loadedLibs\nfile V1.0: VScript File IO Library"
-
-# end of library file 
-
-loadedLibs="$loadedLibs\nzip V1.0: VScript Compression Library"
-
-# end of library zip 
-
 begin1(){
   clear
   room=1
@@ -500,13 +491,19 @@ room8(){
   echo "room8" > "$SAVELOC"
 
   #tell user about story
+  if [ "$TRBF" != "1" ]
+  then
   echo "Further down the hall"
   echo "You can hear the spell crucio screaming"
-  echo "and pleading for life"
+  echo "And pleading for life"
+  else
+  echo "Inspecting here you notice that this room is sticky"
+  fi
   echo ""
+
   echo "Do you?"
-  echo "1) Continue onwards"
-  echo "2) Go back"
+  echo "1) Continue towards the chamber"
+  echo "2) Towards the centeral hall"
 
   #get user input
   read d
@@ -555,6 +552,7 @@ room9(){
   echo "BRACHIABINDO then you take the spare blindfolds and put them on his face"
   echo "After this you can see a door with light radieating around it"
   TRBF="1"
+  sleep 5s
   room9
 else
 

@@ -7,13 +7,19 @@ room8(){
   echo "room8" > "$SAVELOC"
 
   #tell user about story
+  if [ "$TRBF" != "1" ]
+  then
   echo "Further down the hall"
   echo "You can hear the spell crucio screaming"
-  echo "and pleading for life"
+  echo "And pleading for life"
+  else
+  echo "Inspecting here you notice that this room is sticky"
+  fi
   echo ""
+
   echo "Do you?"
-  echo "1) Continue onwards"
-  echo "2) Go back"
+  echo "1) Continue towards the chamber"
+  echo "2) Towards the centeral hall"
 
   #get user input
   read d

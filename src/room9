@@ -29,6 +29,7 @@ room9(){
   echo "BRACHIABINDO then you take the spare blindfolds and put them on his face"
   echo "After this you can see a door with light radieating around it"
   TRBF="1"
+  sleep 5s
   room9
 else
 
