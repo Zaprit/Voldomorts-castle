@@ -1,0 +1,45 @@
+room2(){
+  clear
+  room=2
+  #save the game
+  echo "CRBF=$CRBF" > "$SAVELOC"
+  echo "TRBF=$TRBF" >> "$SAVELOC"
+  echo "room2" >> "$SAVELOC"
+
+  #tell user about story
+  echo "Cells:"
+  echo "You walk into a room full of prison cells"
+  echo "Each one has a rotten skeleton in it."
+  echo ""
+  echo "Towards North-West there are more cells"
+  echo "Towards North you see a room that you hear heavy breathing from"
+  echo "Towards West you see a room that looks like wardens quarters"
+  echo "South is towards the room you were thrown into"
+  echo "Which Way:"
+  echo "1) N"
+  echo "2) NW"
+  echo "3) W"
+  echo "4) S"
+
+  #get user input
+  read d
+
+  case "$d" in
+
+    1)
+      room6
+      ;;
+    2)
+      room5
+      ;;
+    3)
+      room4
+      ;;
+    4)
+      room1
+      ;;
+    *)
+      echo "not an option"
+      room2
+  esac
+}

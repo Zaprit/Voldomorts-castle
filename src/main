@@ -1,0 +1,51 @@
+main(){
+SAVELOC="$HOME/.voldomorts_castle.sav"
+
+#Have we found the door?
+TRBF="0"
+
+#Do we have the key?
+CRBF="0"
+
+clear
+echo "Henry and Imogen present:"
+sleep 0.75s
+
+echo "A Flaming Cheese game"
+sleep 1s
+echo ""
+echo 'Voldomorts Castle'
+sleep 0.5s
+echo "What do you want to do:"
+echo "1) New Game"
+if [ -e "$SAVELOC" ]
+then
+  echo "2) Load Game"
+  echo "3) Quit"
+else
+  echo "2) Quit"
+fi
+read opt
+case $opt in
+
+  1)
+    clear
+    begin1
+    ;;
+  2)
+    if [ -e "$SAVELOC" ]
+    then
+      clear
+      source "$SAVELOC"
+    else
+      exit
+    fi
+    ;;
+  3)
+    if [ -e "$SAVELOC" ]; then
+      exit 0
+    else
+      echo "please choose valid option"
+    fi
+esac
+}

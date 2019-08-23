@@ -1,0 +1,103 @@
+room6(){
+  clear
+  room=6
+  #save the game
+  echo "CRBF=$CRBF" > "$SAVELOC"
+  echo "TRBF=$TRBF" >> "$SAVELOC"
+  echo "room6" >> "$SAVELOC"
+  
+  if [ "$CRBF" != "1" ]
+  then
+  #tell user about story
+  echo "In this room you see a sleeping dragon"
+  echo "at the other side of the room you see a set of keys, however its tail is in the way"
+  echo "Do you?"
+  echo "1) Jump over the tail"
+  echo "2) Go back"
+  echo "3) Climb over like a NOOB"
+
+  #get user input
+  read d
+
+  case "$d" in
+
+    1)
+      clear
+      echo "you trip over the tail and the dragon wakes... Do you?"
+      echo "1) run, get the keys and then get the hell out of here"
+      echo "2) stroke the dragon's tail and try to befrend it"
+      echo "3) embrace your enevitable DOOM™"
+      read c
+      case "$c" in
+        1)
+        echo "You are torched alive by dragon flame, if you were dovahkiin then maybe you would of survived."
+        sleep 2s
+        dead
+        return
+        ;;
+        2)
+        echo "it starts purring loudly and slowly goes back to sleep, now resting you go and get the keys, then leave"
+        CRBF="1"
+        sleep 3s
+        room2
+        ;;
+        3)
+        echo "You didn't even try... Uncool"
+        sleep 2s
+        dead
+        return
+        ;;
+      esac
+      ;;
+    2)
+    room2
+    ;;
+    3)
+
+      clear
+      echo "you writhing over the tail wakes the dragon... Do you?"
+      echo "1) run, get the keys and then get the hell out of here"
+      echo "2) stroke the dragon's tail and try to befrend it"
+      echo "3) embrace your enevitable DOOM™"
+      read c
+      case "$c" in
+        1)
+        echo "You are torched alive by dragon flame, if you were dovahkiin then maybe you would of survived."
+        sleep 2s
+        dead
+        return
+        ;;
+        2)
+        echo "it starts purring loudly and slowly goes back to sleep, now resting you go and get the keys and leave"
+        CRBF="1"
+        sleep 3s
+        room2
+
+        ;;
+        3)
+        echo "You didn't even try... Uncool"
+        sleep 2s
+        dead
+        return
+        ;;
+      esac
+      ;;
+
+
+    *)
+      echo "not an option"
+  esac
+else
+  echo "the dragon lifts one eyelid and smiles at you and says \"CHEESE\""
+  echo "Do you?"
+  echo "1) leave"
+  read d
+  if [ "$d" == "1" ]
+  then
+    room2
+  else
+    echo "not an option"
+    room6
+  fi
+fi
+}

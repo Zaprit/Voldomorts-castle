@@ -1,0 +1,91 @@
+room9(){
+  clear
+  room=9
+  #save the game
+  echo "CRBF=$CRBF" > "$SAVELOC"
+  echo "TRBF=$TRBF" >> "$SAVELOC"
+  echo "room9" > "$SAVELOC"
+
+  #tell user about story
+  echo "Torture Chamber"
+  if [ "$TRBF" == "0" ]
+  then
+  echo "You reach the room with piles of bodies everywhere and a putrid smell."
+  sleep 2s
+  echo "In the center of the room you see a man with blood stained armour"
+  sleep 2s
+  echo "He raises his wand"
+  echo "and kills one of the slaves that he was torturing"
+  sleep 2s
+  echo "you tackle him and pin him to the ground drawing your wand you shout..."
+  echo ""
+  sleep 2s
+  echo "we interupt this epic fight scene for a word from our sponser"
+  echo "malodourant cheeses"
+  echo "for when you need a cheese that smells like butt"
+  echo "..."
+  echo ""
+  echo "Previously on stopping a guy:"
+  echo "BRACHIABINDO then you take the spare blindfolds and put them on his face"
+  echo "After this you can see a door with light radieating around it"
+  TRBF="1"
+  room9
+else
+
+  echo "You see the door again..."
+
+fi
+
+  if [ "$CRBF" == "1" ]; then
+
+    echo "What now"
+    echo "1) unlock door with key from cells"
+    echo "2) go back"
+    read c
+    case "$c" in
+      1)
+      echo "as you put the key in the door it clicks and as you turn the key"
+      sleep 1s
+      endscreen
+      ;;
+      2)
+      room8
+      ;;
+      *)
+      echo "not an option"
+      room9
+    esac
+
+
+  else
+
+    echo "You do not have the key and the door is locked"
+    echo "What now?"
+    echo "1) Go back"
+    read c
+    if [ "$c" == "1" ]
+    then
+      room8
+    else
+      echo "not an option"
+      room9
+    fi
+  fi
+
+
+
+  #get user input
+  read d
+
+  case "$d" in
+
+    1)
+      room8
+      ;;
+    2)
+      room1
+      ;;
+    *)
+      echo "not an option"
+  esac
+}

@@ -1,0 +1,94 @@
+#!/bin/bash
+
+#Application/Module configuration
+APP_NAME="voldemorts-castle"
+APP_VERSION="1.0"
+APP_TYPE="app"
+APP_FUZZY_NAME="The castle of voldemort"
+#Past here... No touchey
+
+appdata(){
+  echo 'APP_NAME='"\"$APP_NAME\"" >> $1
+  echo 'APP_FUZZY_NAME='"\"$APP_FUZZY_NAME\"" >> $1
+  echo 'APP_VERSION='$APP_VERSION >> $1
+  echo '' >> $1
+  echo '#Pregenerated code ahead. Here be dragons?' >> $1
+}
+
+
+#Compiled in library
+if [ "$APP_TYPE" == "lib" ]
+then
+  if [ "$1" == "-en" ]; then
+     echo "enabled $APP_FUZZY_NAME" && touch ".en" && exit
+  fi
+  if [ "$1" == "-ds" ]; then
+     echo "disable $APP_FUZZY_NAME" && rm -f ."en" && exit
+  fi
+  #clean out old blob
+  rm -f out.vlib
+  touch out.vlib
+
+  #Compile classes
+  for class in $(ls src); do
+    cat src/$class >> out.vlib
+    echo "Added class $class to library"
+  done
+  echo 'loadedLibs="$loadedLibs\n'"$APP_NAME V$APP_VERSION: $APP_FUZZY_NAME"'"' >> out.vlib
+fi
+
+if [ "$APP_TYPE" == "mod" ]
+then
+
+  rm -f $APP_NAME.vmod
+  touch $APP_NAME.vmod
+
+  for class in $(ls src); do
+    cat src/$class >> $APP_NAME.vmod
+    echo "Added class $class to module"
+  done
+  echo 'loadedMods="$loadedMods\n'"$APP_NAME V$APP_VERSION: $APP_FUZZY_NAME"'"' >> $APP_NAME.vmod
+fi
+
+if [ "$APP_TYPE" == "app" ]
+then
+
+  rm -f *.vs
+  touch "$APP_NAME.vs"
+  echo '#!/bin/bash' >> $APP_NAME.vs
+  echo "Created empty app bundle"
+
+
+
+  appdata "$APP_NAME.vs"
+  echo "Added app data to bundle"
+
+  if [ -e include/vsruntime.base ]
+  then
+    cat include/vsruntime.base >> $APP_NAME.vs
+  fi
+
+
+  if [ -d mods ]
+  then
+    for mod in $(ls mods)
+    do
+      cat mods/$mod >> $APP_NAME.vs
+    done
+  fi
+  if [ ! -e src/main ]
+  then
+    echo "Main class not found, exiting"
+    exit
+  fi
+  for class in $(ls src)
+  do
+    cat src/$class >> $APP_NAME.vs
+
+  done
+  echo 'if [ "$1" != "--getdata" ]' >> $APP_NAME.vs
+  echo 'then' >> $APP_NAME.vs
+  echo 'main $@' >> $APP_NAME.vs
+  echo 'fi' >> $APP_NAME.vs
+  chmod 777 $APP_NAME.vs
+fi

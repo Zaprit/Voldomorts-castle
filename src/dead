@@ -1,0 +1,9 @@
+dead(){
+
+  echo "YOU DIED..."
+  sleep 0.5s
+  echo "Idiot"
+  ./voldemorts-castle.vs
+
+
+}

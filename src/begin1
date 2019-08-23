@@ -1,0 +1,38 @@
+begin1(){
+  clear
+  room=1
+  #save the game
+  echo "CRBF=$CRBF" > "$SAVELOC"
+  echo "TRBF=$TRBF" >> "$SAVELOC"
+  echo "room1" >> "$SAVELOC"
+
+  #tell user about story
+  echo "Voldemort's dungeon"
+  echo "You've been thrown in through the roof."
+  echo ""
+  echo "You see three doors."
+  echo ""
+  echo "Which Way:"
+  echo "1) NE"
+  echo "2) SE"
+  echo "3) SW"
+
+  # Get user input
+  read d
+
+  case "$d" in
+
+    1)
+      room2
+      ;;
+    2)
+      room7
+      ;;
+    3)
+      room3
+      ;;
+    *)
+      echo "not an option"
+      room1
+  esac
+}

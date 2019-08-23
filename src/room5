@@ -1,0 +1,37 @@
+room5(){
+  clear
+  room=5
+  #save the game
+  echo "CRBF=$CRBF" > "$SAVELOC"
+  echo "TRBF=$TRBF" >> "$SAVELOC"
+  echo "room5" >> "$SAVELOC"
+
+  #tell user about story
+  echo "(More) Cells"
+  echo "More cells... what more can I say"
+
+  echo ""
+  echo "Which Way:"
+  echo "1) E"
+  echo "2) S"
+  echo "3) SW"
+
+  #get user input
+  read d
+
+  case "$d" in
+
+    1)
+      room6
+      ;;
+    2)
+      room4
+      ;;
+    3)
+      room2
+      ;;
+    *)
+      echo "not an option"
+      room5
+  esac
+}

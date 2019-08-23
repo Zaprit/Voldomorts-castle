@@ -1,0 +1,12 @@
+#!/bin/bash
+source $1 --getdata
+echo "Appinfo tool 1.0"
+echo "  App Metadata:"
+echo "  Name: $APP_NAME"
+echo "  Version $APP_VERSION"
+echo "  Name-formatted: $APP_FUZZY_NAME"
+echo "  VScript Data:"
+echo "  VScript Version: $VS_VERSION"
+echo "  VScript Version Codename: $VS_CODENAME"
+echo "  Loaded libraries in runtime: $loadedLibs"
+echo "  Loaded Modules in runtime: $loadedMods"

@@ -1,0 +1,7 @@
+endscreen(){
+clear
+echo "You win"
+echo "after defeating a dumbass with a wand you finally leave the dungeon"
+rm $SAVELOC
+exit
+}

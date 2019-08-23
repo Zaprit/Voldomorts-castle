@@ -1,0 +1,33 @@
+room8(){
+  clear
+  room=8
+  #save the game
+  echo "CRBF=$CRBF" > "$SAVELOC"
+  echo "TRBF=$TRBF" >> "$SAVELOC"
+  echo "room8" > "$SAVELOC"
+
+  #tell user about story
+  echo "Further down the hall"
+  echo "You can hear the spell crucio screaming"
+  echo "and pleading for life"
+  echo ""
+  echo "Do you?"
+  echo "1) Continue onwards"
+  echo "2) Go back"
+
+  #get user input
+  read d
+
+  case "$d" in
+
+    1)
+      room9
+      ;;
+    2)
+      room7
+      ;;
+    *)
+      echo "not an option"
+      room8
+  esac
+}

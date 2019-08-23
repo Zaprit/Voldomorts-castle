@@ -1,0 +1,34 @@
+room7(){
+  clear
+  room=7
+  #save the game
+  echo "CRBF=$CRBF" > "$SAVELOC"
+  echo "TRBF=$TRBF" >> "$SAVELOC"
+  echo "room7" > "$SAVELOC"
+
+  #tell user about story
+  echo "Hall"
+  echo "You walk through a hall full of dead bodies"
+  echo "the walls are stained with dry bood."
+  echo "the blood gets wetter as you go along"
+  echo ""
+  echo "Do you?"
+  echo "1) Continue onwards"
+  echo "2) Go back"
+
+  #get user input
+  read d
+
+  case "$d" in
+
+    1)
+      room8
+      ;;
+    2)
+      room1
+      ;;
+    *)
+      echo "not an option"
+      room7
+  esac
+}

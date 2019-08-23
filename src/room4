@@ -1,0 +1,34 @@
+room4(){
+  clear
+  room=4
+  #save the game
+  echo "CRBF=$CRBF" > "$SAVELOC"
+  echo "TRBF=$TRBF" >> "$SAVELOC"
+  echo "room4" >> "$SAVELOC"
+
+  #tell user about story
+  echo "Wardens quarters"
+  echo "there is an allmost unrecongnisable mouldy cheese sandwich, curious you take a small bite of the cheese"
+  sleep 2s
+  echo "it is the most tasty cheese sandwich you have ever tasted even though it is mouldy all the way through"
+  echo ""
+  echo "Which Way:"
+  echo "1) N"
+  echo "2) E"
+
+  #get user input
+  read d
+
+  case "$d" in
+
+    1)
+      room5
+      ;;
+    2)
+      room2
+      ;;
+    *)
+      echo "not an option"
+      room4
+  esac
+}

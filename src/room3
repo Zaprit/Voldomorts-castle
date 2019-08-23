@@ -1,0 +1,32 @@
+room3(){
+  clear
+  room=3
+  #save the game
+  echo "CRBF=$CRBF" > "$SAVELOC"
+  echo "TRBF=$TRBF" >> "$SAVELOC"
+  echo "room3" > "$SAVELOC"
+
+  #tell user about story
+  echo "Bizzare Room"
+  echo ""
+  echo "You see what looks like a dead body"
+  echo "When you walk in it sits bolt upright and says \"It is dangerous to go alone, look at my flaming cheese\""
+  echo "at which point a cheese wheel bursts into flame"
+  echo "the room is full of the smell of swiss, no chedder, no gruyère."
+  echo ""
+  echo "Where too"
+  echo "1) NE"
+
+  # Get user input
+  read d
+
+  case "$d" in
+
+    1)
+      room1
+      ;;
+    *)
+      echo "not an option"
+      room3
+  esac
+}

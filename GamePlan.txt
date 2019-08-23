@@ -1,0 +1,11 @@
+Voldemorts Castle 1.0
+9 reg rooms
+Design story
+translate that into bash
+game logic
+polishing touches
+
+
+
+Oregon trail like
+or maybe Zork like
