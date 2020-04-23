@@ -385,7 +385,7 @@ room6(){
         2)
         echo "it starts purring loudly and slowly goes back to sleep, now resting you go and get the keys, then leave"
         CRBF="1"
-        sleep 3s
+	read -n 1 -s -r -p "Press any key to continue"
         room2
         ;;
         3)
@@ -417,7 +417,7 @@ room6(){
         2)
         echo "it starts purring loudly and slowly goes back to sleep, now resting you go and get the keys and leave"
         CRBF="1"
-        sleep 3s
+        read -n 1 -s -r -p "Press any key to continue"
         room2
 
         ;;
